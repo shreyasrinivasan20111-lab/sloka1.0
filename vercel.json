@@ -1,0 +1,22 @@
+{
+  "functions": {
+    "backend/main.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/backend/main.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/backend/main.py"
+    }
+  ],
+  "build": {
+    "env": {
+      "PYTHONPATH": "$PYTHONPATH:/var/task/backend"
+    }
+  }
+}
