@@ -133,7 +133,7 @@ const Dashboard = () => {
                       
                       <Link
                         to={`/course/${course.id}`}
-                        className="text-white px-4 py-2 rounded-lg hover:bg-opacity-80 transition-colors duration-200"
+                        className="text-white px-4 py-2 rounded-lg hover:bg-opacity-80 transition-colors duration-200 cross-platform-button"
                         style={{ backgroundColor: '#7e5a40' }}
                       >
                         Enter Course

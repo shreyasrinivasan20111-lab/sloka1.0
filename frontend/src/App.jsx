@@ -17,7 +17,10 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen" style={{ backgroundColor: '#ceaca4' }}>
+        <div 
+          className="min-h-screen scroll-container high-dpi-text" 
+          style={{ backgroundColor: '#ceaca4' }}
+        >
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

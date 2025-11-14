@@ -90,7 +90,7 @@ const Login = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent cross-platform-input"
                     style={{ 
                       borderColor: '#7e5a40',
                       '--tw-ring-color': 'rgba(126, 90, 64, 0.5)'
@@ -116,7 +116,7 @@ const Login = () => {
                     required
                     value={formData.password}
                     onChange={handleChange}
-                    className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
+                    className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent cross-platform-input"
                     style={{ 
                       borderColor: '#7e5a40',
                       '--tw-ring-color': 'rgba(126, 90, 64, 0.5)'
@@ -142,7 +142,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full text-white py-3 px-4 rounded-lg font-semibold hover:bg-opacity-80 focus:ring-4 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+              className="w-full text-white py-3 px-4 rounded-lg font-semibold hover:bg-opacity-80 focus:ring-4 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 cross-platform-button"
               style={{ 
                 backgroundColor: '#7e5a40',
                 focusRingColor: 'rgba(126, 90, 64, 0.2)'
