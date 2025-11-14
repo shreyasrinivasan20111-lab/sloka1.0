@@ -109,13 +109,13 @@ const Register = () => {
                       required
                       value={formData.first_name}
                       onChange={handleChange}
-                      className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                      className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
                       style={{ 
                         borderColor: '#7e5a40',
-                        focusRingColor: '#7e5a40',
-                        focusBorderColor: '#7e5a40'
+                        '--tw-ring-color': 'rgba(126, 90, 64, 0.5)'
                       }}
                       placeholder="First Name"
+                      autoComplete="given-name"
                     />
                   </div>
                 </div>
@@ -131,13 +131,13 @@ const Register = () => {
                     required
                     value={formData.last_name}
                     onChange={handleChange}
-                    className="block w-full px-3 py-3 border border-gray-300 rounded-lg"
+                    className="block w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
                     style={{ 
                       borderColor: '#7e5a40',
-                      focusRingColor: '#7e5a40',
-                      focusBorderColor: '#7e5a40'
+                      '--tw-ring-color': 'rgba(126, 90, 64, 0.5)'
                     }}
                     placeholder="Last Name"
+                    autoComplete="family-name"
                   />
                 </div>
               </div>
@@ -157,13 +157,13 @@ const Register = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg"
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
                     style={{ 
                       borderColor: '#7e5a40',
-                      focusRingColor: '#7e5a40',
-                      focusBorderColor: '#7e5a40'
+                      '--tw-ring-color': 'rgba(126, 90, 64, 0.5)'
                     }}
                     placeholder="Enter your email"
+                    autoComplete="email"
                   />
                 </div>
               </div>
@@ -183,13 +183,13 @@ const Register = () => {
                     required
                     value={formData.password}
                     onChange={handleChange}
-                    className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg"
+                    className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
                     style={{ 
                       borderColor: '#7e5a40',
-                      focusRingColor: '#7e5a40',
-                      focusBorderColor: '#7e5a40'
+                      '--tw-ring-color': 'rgba(126, 90, 64, 0.5)'
                     }}
                     placeholder="Create a password"
+                    autoComplete="new-password"
                   />
                   <button
                     type="button"
@@ -220,13 +220,13 @@ const Register = () => {
                     required
                     value={formData.confirmPassword}
                     onChange={handleChange}
-                    className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg"
+                    className="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-50 focus:border-transparent"
                     style={{ 
                       borderColor: '#7e5a40',
-                      focusRingColor: '#7e5a40',
-                      focusBorderColor: '#7e5a40'
+                      '--tw-ring-color': 'rgba(126, 90, 64, 0.5)'
                     }}
                     placeholder="Confirm your password"
+                    autoComplete="new-password"
                   />
                   <button
                     type="button"
