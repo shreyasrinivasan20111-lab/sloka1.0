@@ -110,6 +110,14 @@ body {
   
   /* Better touch feedback */
   touch-action: manipulation;
+  
+  /* Ensure text is black */
+  color: #000000 !important;
+}
+
+.cross-platform-input::placeholder {
+  color: #6b7280 !important;
+  opacity: 1 !important;
 }
 
 /* Samsung Internet specific fixes */
