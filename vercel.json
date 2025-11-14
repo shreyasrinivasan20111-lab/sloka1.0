@@ -1,17 +1,5 @@
 {
-  "functions": {
-    "backend/main.py": {
-      "runtime": "@vercel/python"
-    }
-  },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/backend/main.py"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/backend/main.py"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api" }
   ]
 }
