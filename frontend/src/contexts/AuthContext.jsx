@@ -49,11 +49,17 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
+      console.log('Attempting login with API_BASE_URL:', API_BASE_URL);
       const response = await axios.post(`${API_BASE_URL}/login`, {
         email,
         password
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
 
+      console.log('Login response:', response.data);
       const { access_token } = response.data;
       localStorage.setItem('token', access_token);
       setToken(access_token);
@@ -67,18 +73,25 @@ export const AuthProvider = ({ children }) => {
       return { success: true };
     } catch (error) {
       console.error('Login failed:', error);
-      const message = error.response?.data?.detail || 'Login failed';
+      console.error('Error details:', error.response?.data);
+      const message = error.response?.data?.detail || error.message || 'Login failed';
       return { success: false, error: message };
     }
   };
 
   const register = async (userData) => {
     try {
-      await axios.post(`${API_BASE_URL}/register`, userData);
+      console.log('Attempting registration with API_BASE_URL:', API_BASE_URL);
+      await axios.post(`${API_BASE_URL}/register`, userData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       return { success: true };
     } catch (error) {
       console.error('Registration failed:', error);
-      const message = error.response?.data?.detail || 'Registration failed';
+      console.error('Error details:', error.response?.data);
+      const message = error.response?.data?.detail || error.message || 'Registration failed';
       return { success: false, error: message };
     }
   };

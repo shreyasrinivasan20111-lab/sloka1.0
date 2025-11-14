@@ -67,9 +67,9 @@ app = FastAPI(title="Sai Kalpataru API", version="1.0.0")
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, specify your frontend domain
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["*"],
 )
 
@@ -267,6 +267,35 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
         conn.close()
         
         if not user or not verify_password(form_data.password, user[4]):
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Incorrect email or password",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        
+        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+        access_token = create_access_token(
+            data={"sub": user[1]}, expires_delta=access_token_expires
+        )
+        return {"access_token": access_token, "token_type": "bearer"}
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        error_msg = f"Login error: {str(e)}"
+        await send_error_notification(error_msg)
+        raise HTTPException(status_code=500, detail="Login failed")
+
+@api_router.post("/login", response_model=Token)
+async def login(user_login: UserLogin):
+    try:
+        conn = sqlite3.connect(DATABASE_PATH)
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE email = ?", (user_login.email,))
+        user = cursor.fetchone()
+        conn.close()
+        
+        if not user or not verify_password(user_login.password, user[4]):
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Incorrect email or password",
@@ -628,6 +657,11 @@ async def get_student_assignments(current_user: User = Depends(get_current_user)
         error_msg = f"Get student assignments error: {str(e)}"
         await send_error_notification(error_msg)
         raise HTTPException(status_code=500, detail="Failed to fetch student assignments")
+
+# Health check endpoint
+@api_router.get("/health")
+async def health_check():
+    return {"status": "healthy", "message": "Sai Kalpataru API is running"}
 
 # Include API router
 app.include_router(api_router)
