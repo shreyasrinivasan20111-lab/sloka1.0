@@ -1,7 +1,7 @@
 {
   "functions": {
     "backend/main.py": {
-      "runtime": "python3.9"
+      "runtime": "@vercel/python"
     }
   },
   "routes": [
@@ -13,10 +13,5 @@
       "src": "/(.*)",
       "dest": "/backend/main.py"
     }
-  ],
-  "build": {
-    "env": {
-      "PYTHONPATH": "$PYTHONPATH:/var/task/backend"
-    }
-  }
+  ]
 }
